@@ -13,7 +13,7 @@ export default function Header({ navigation }) {
   return (
     <View style={[styles.container, { paddingTop: insets.top + 8 }]}>
       <Image
-        source={require('../../../assets/VocciLogo.png')}
+        source={require('../../../assets/Vocci2.png')}
         style={styles.logo}
         resizeMode="contain"
       />
