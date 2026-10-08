@@ -1,41 +1,103 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
-export default function Cadastro1() {
-  const navigation = useNavigation();
+import {
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+  View,
+  Text,
+} from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import Header from './Header';
+import Etapas from './Etapas';
+import Formulario from './Formulario';
+
+
+export default function CadastroCliente() {
 
   return (
-    
-       navigation.goBack()} style={styles.backButton}>
-        ← Voltar
-      
-      
-      Crie sua conta
-      Etapa 1 de 2: Dados pessoais
-      
-      Nome completo
-      
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#FDF4FF" />
+      {/* Banner de Topo - Ambiente Seguro */}
 
-      CPF
-      
 
-       navigation.navigate('Cadastro2')}>
-        Continuar para endereço →
-      
-    
+      <Header />
+
+      <ScrollView contentContainerStyle={styles.conteudo} showsVerticalScrollIndicator={false}>
+
+        {/* Etapas de progresso */}
+
+        <Etapas />
+
+
+        {/* Formulario */}
+
+        <View style={styles.caixaFormulario}>
+          <Formulario />
+        </View>
+
+        <Text style={styles.termosEntrar}>
+          Já possui uma conta? <Text style={styles.termosLink}>Entrar</Text>
+        </Text>
+
+        <View style={styles.rodapeVocciContainer}>
+          <Feather name="check-circle" size={12} color="#71717A" style={{ marginRight: 4 }} />
+          <Text style={styles.Vocci}>VOCCI • CUIDADO & SEGURANÇA</Text>
+        </View>
+
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-// Poderá reutilizar o mesmo StyleSheet do Login aqui
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8F9FA', padding: 20, paddingTop: 50 },
-  backButton: { marginBottom: 20 },
-  backText: { fontSize: 16, color: '#5B2C6F' },
-  title: { fontSize: 22, fontWeight: 'bold' },
-  subtitle: { color: '#777', marginBottom: 20 },
-  label: { fontWeight: 'bold', marginBottom: 5, color: '#333' },
-  input: { backgroundColor: '#F1F1F1', padding: 15, borderRadius: 8, marginBottom: 15, borderWidth: 1, borderColor: '#ddd' },
-  button: { backgroundColor: '#5B2C6F', padding: 15, borderRadius: 8, alignItems: 'center', marginTop: 10 },
-  buttonText: { color: '#FFF', fontWeight: 'bold', fontSize: 16 },
-});
+  caixaFormulario: {
+    backgroundColor: '#FFFFFF',
+
+    borderWidth: 1,
+    width: 380,
+    borderColor: '#DDD4E2',
+    borderRadius: 20,
+    padding: 15
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: '#FCF9F8',
+  },
+  conteudo: {
+    padding: 16,
+    paddingBottom: 24,
+  },
+  termosEntrar: {
+    fontSize: 13,
+    color: '#3F3F46',
+    textAlign: 'center',
+    marginBottom: 16,
+    marginTop: 8,
+  },
+  termosLink: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+    color: '#5B2A7A',
+    fontSize: 12,
+  },
+  rodapeVocciContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+  },
+  Vocci: {
+    fontSize: 10,
+    color: '#71717A',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+  },
+
+
+}
+);
