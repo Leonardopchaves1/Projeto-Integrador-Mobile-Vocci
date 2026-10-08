@@ -3,20 +3,18 @@ import { Feather } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import Termos from '../Termos';
 
-
-
 export default function Formulario() {
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
     const [confirmarSenha, setConfirmarSenha] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    const [showSenha, setShowSenha] = useState(false);
+    const [showConfirmarSenha, setShowConfirmarSenha] = useState(false);
     const [nascimento, setNascimento] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
-    const [ email, setEmail] = useState('');
+    const [email, setEmail] = useState('');
 
     return (
-
         <View style={styles.container}>
             <View style={styles.card}>
                 <View style={styles.secaoHeader}>
@@ -28,7 +26,6 @@ export default function Formulario() {
                         <Text style={styles.secaoSubtitulo}>Pessoa física titular responsável pelo cadastro.</Text>
                     </View>
                 </View>
-
 
                 <View style={styles.campoGroup}>
                     <View style={styles.labelRow}>
@@ -47,7 +44,6 @@ export default function Formulario() {
                     </View>
                 </View>
 
-
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>CPF</Text>
                     <View style={styles.inputBox}>
@@ -63,7 +59,6 @@ export default function Formulario() {
                     </View>
                 </View>
 
-
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>Data de nascimento</Text>
                     <View style={styles.inputBox}>
@@ -73,11 +68,12 @@ export default function Formulario() {
                             value={nascimento}
                             onChangeText={setNascimento}
                             keyboardType="numeric"
-                            placeholder="digite seu nascimento"
+                            placeholder="Digite sua data de nascimento"
                             placeholderTextColor="#A0A0A0"
                         />
                     </View>
                 </View>
+
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>Telefone / WhatsApp</Text>
                     <View style={styles.inputBox}>
@@ -93,7 +89,6 @@ export default function Formulario() {
                     </View>
                 </View>
 
-
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>E-mail</Text>
                     <View style={styles.inputBox}>
@@ -104,12 +99,11 @@ export default function Formulario() {
                             onChangeText={setEmail}
                             keyboardType="email-address"
                             autoCapitalize="none"
-                            placeholder="Digite a senha"
+                            placeholder="Digite o seu email"
                             placeholderTextColor="#A0A0A0"
                         />
                     </View>
                 </View>
-
 
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>Senha de acesso</Text>
@@ -119,16 +113,15 @@ export default function Formulario() {
                             style={styles.input}
                             value={senha}
                             onChangeText={setSenha}
-                            secureTextEntry={!showPassword}
-                            placeholder="confirme senha"
+                            secureTextEntry={!showSenha}
+                            placeholder="Digite a senha"
                             placeholderTextColor="#A0A0A0"
                         />
-                        <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                            <Feather name={showPassword ? 'eye-off' : 'eye'} size={16} color="#71717A" />
+                        <TouchableOpacity onPress={() => setShowSenha(!showSenha)}>
+                            <Feather name={showSenha ? 'eye-off' : 'eye'} size={16} color="#71717A" />
                         </TouchableOpacity>
                     </View>
                 </View>
-
 
                 <View style={styles.campoGroup}>
                     <Text style={styles.label}>Confirmar senha</Text>
@@ -138,27 +131,24 @@ export default function Formulario() {
                             style={styles.input}
                             value={confirmarSenha}
                             onChangeText={setConfirmarSenha}
-                            secureTextEntry={!showPassword}
-                            placeholder=""
+                            secureTextEntry={!showConfirmarSenha}
+                            placeholder="Confirme a senha"
                             placeholderTextColor="#A0A0A0"
                         />
-                        <Feather name="check-circle" size={16} color="#10B981" />
+                        <TouchableOpacity onPress={() => setShowConfirmarSenha(!showConfirmarSenha)}>
+                            <Feather name={showConfirmarSenha ? 'eye-off' : 'eye'} size={16} color="#71717A" />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
 
             {/* Termos */}
-
             <Termos />
-
         </View>
-
     );
 }
 
-
 const styles = StyleSheet.create({
-
     secaoHeader: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -217,4 +207,4 @@ const styles = StyleSheet.create({
         color: '#18181B',
         marginLeft: 8,
     },
-})
+});
